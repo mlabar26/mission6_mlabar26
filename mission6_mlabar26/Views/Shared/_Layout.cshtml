@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="icon" href="~/img/JoelHiltonHeadshot.jpg" type="image/icon type"> <!--Adds icon to title-->
+</head>
+<body>
+    @*Provides each page with a way to go to other pages*@
+    <nav>
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Home" asp-action="Podcasts">Podcasts</a>
+        <a asp-controller="Home" asp-action="Movies">Movies</a>
+    </nav>
+
+    @*Displays the inner home pages*@
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
