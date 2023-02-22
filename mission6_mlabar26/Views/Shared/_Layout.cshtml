@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="icon" href="~/img/JoelHiltonHeadshot.jpg" type="image/icon type"> <!--Adds icon to title-->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     @*Provides each page with a way to go to other pages*@
     <nav>
         <a asp-controller="Home" asp-action="Index">Home</a>
+        &nbsp;
         <a asp-controller="Home" asp-action="Podcasts">Podcasts</a>
-        <a asp-controller="Home" asp-action="AddMovies">Movies</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="AddMovies">Add Movies</a>
+        &nbsp;
+        <a asp-controller="Home" asp-action="MovieList">Movie List</a>
     </nav>
 
     @*Displays the inner home pages*@

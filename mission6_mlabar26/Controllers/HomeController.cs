@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using mission6_mlabar26.Models;
 using System;
@@ -11,12 +12,10 @@ namespace mission6_mlabar26.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private MovieInfoContext _MovieInfo { get; set; }
 
-        public HomeController(ILogger<HomeController> logger, MovieInfoContext movie)
+        public HomeController(MovieInfoContext movie)
         {
-            _logger = logger;
             _MovieInfo = movie;
         }
 
@@ -33,6 +32,7 @@ namespace mission6_mlabar26.Controllers
         [HttpGet]
         public IActionResult AddMovies()
         {
+            ViewBag.Categories = _MovieInfo.Categories.ToList();
             return View();
         }
 
@@ -44,7 +44,23 @@ namespace mission6_mlabar26.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult MovieList ()
+        {
+            var movies = _MovieInfo.Responses
+                .Include(x => x.Category)
+                .ToList();
+            return View(movies);
+        }
+
+        public IActionResult Edit ()
+        {
+            ViewBag.Categories = _MovieInfo.Categories.ToList();
+            //var movie = _MovieInfo.Responses.Single();
+            return View("AddMovies");
+        }
+
+        public IActionResult Delete ()
         {
             return View();
         }

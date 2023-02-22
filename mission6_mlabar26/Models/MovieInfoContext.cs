@@ -15,16 +15,28 @@ namespace mission6_mlabar26.Models
             
         }
 
-        public DbSet<movieForm> responses { get; set; }
+        public DbSet<movieForm> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                    new Category { CategoryID = 1, CategoryName = "Action/Adventure" },
+                    new Category { CategoryID = 2, CategoryName = "Comedy" },
+                    new Category { CategoryID = 3, CategoryName = "Drama" },
+                    new Category { CategoryID = 4, CategoryName = "Family" },
+                    new Category { CategoryID = 5, CategoryName = "Horror/Suspense" },
+                    new Category { CategoryID = 6, CategoryName = "Miscellaneous" },
+                    new Category { CategoryID = 7, CategoryName = "Television" },
+                    new Category { CategoryID = 8, CategoryName = "VHS" }
+                );
+
             mb.Entity<movieForm>().HasData(
 
                 new movieForm
                 {
                     movieID = 1,
-                    category = "Action/Adventure",
+                    CategoryID = 1,
                     title = "The Dark Knight",
                     year = "2008",
                     director = "Christopher Nolan",
@@ -36,7 +48,7 @@ namespace mission6_mlabar26.Models
                 new movieForm
                 {
                     movieID = 2,
-                    category = "Comedy",
+                    CategoryID = 2,
                     title = "Hot Rod",
                     year = "2007",
                     director = "Christopher Nolan",
@@ -47,7 +59,7 @@ namespace mission6_mlabar26.Models
                 new movieForm
                 {
                     movieID = 3,
-                    category = "Action/Adventure",
+                    CategoryID = 1,
                     title = "Interstellar",
                     year = "2014",
                     director = "Akiva Schaffer",

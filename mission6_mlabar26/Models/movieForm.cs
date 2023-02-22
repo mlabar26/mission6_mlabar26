@@ -12,9 +12,6 @@ namespace mission6_mlabar26.Models
         [Required]
         public int movieID { get; set; }
 
-        [Required(ErrorMessage = "Category is required")]
-        public string category { get; set; }
-
         [Required(ErrorMessage = "Title is required")]
         public string title { get; set; }
 
@@ -26,11 +23,15 @@ namespace mission6_mlabar26.Models
 
         [Required(ErrorMessage = "Rating is required")]
         public string rating { get; set; }
-
         public bool edited { get; set; }
         public string lent { get; set; }
 
         [MaxLength(25)]
         public string notes { get; set; }
+        
+        //Foreign Key Relationship
+        [Required(ErrorMessage = "Category is required")]
+        public int CategoryID { get; set; }
+        public Category Category { get; set; }
     }
 }

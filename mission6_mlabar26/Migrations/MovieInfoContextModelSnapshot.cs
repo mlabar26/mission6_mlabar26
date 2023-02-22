@@ -15,15 +15,70 @@ namespace mission6_mlabar26.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
+            modelBuilder.Entity("mission6_mlabar26.Models.Category", b =>
+                {
+                    b.Property<int>("CategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryID = 1,
+                            CategoryName = "Action/Adventure"
+                        },
+                        new
+                        {
+                            CategoryID = 2,
+                            CategoryName = "Comedy"
+                        },
+                        new
+                        {
+                            CategoryID = 3,
+                            CategoryName = "Drama"
+                        },
+                        new
+                        {
+                            CategoryID = 4,
+                            CategoryName = "Family"
+                        },
+                        new
+                        {
+                            CategoryID = 5,
+                            CategoryName = "Horror/Suspense"
+                        },
+                        new
+                        {
+                            CategoryID = 6,
+                            CategoryName = "Miscellaneous"
+                        },
+                        new
+                        {
+                            CategoryID = 7,
+                            CategoryName = "Television"
+                        },
+                        new
+                        {
+                            CategoryID = 8,
+                            CategoryName = "VHS"
+                        });
+                });
+
             modelBuilder.Entity("mission6_mlabar26.Models.movieForm", b =>
                 {
                     b.Property<int>("movieID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("category")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("CategoryID")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("director")
                         .IsRequired()
@@ -53,13 +108,15 @@ namespace mission6_mlabar26.Migrations
 
                     b.HasKey("movieID");
 
-                    b.ToTable("responses");
+                    b.HasIndex("CategoryID");
+
+                    b.ToTable("Responses");
 
                     b.HasData(
                         new
                         {
                             movieID = 1,
-                            category = "Action/Adventure",
+                            CategoryID = 1,
                             director = "Christopher Nolan",
                             edited = false,
                             notes = "Great acting, great story!",
@@ -70,7 +127,7 @@ namespace mission6_mlabar26.Migrations
                         new
                         {
                             movieID = 2,
-                            category = "Comedy",
+                            CategoryID = 2,
                             director = "Christopher Nolan",
                             edited = false,
                             rating = "PG-13",
@@ -80,7 +137,7 @@ namespace mission6_mlabar26.Migrations
                         new
                         {
                             movieID = 3,
-                            category = "Action/Adventure",
+                            CategoryID = 1,
                             director = "Akiva Schaffer",
                             edited = false,
                             notes = "Love the soundtrack!",
@@ -88,6 +145,15 @@ namespace mission6_mlabar26.Migrations
                             title = "Interstellar",
                             year = "2014"
                         });
+                });
+
+            modelBuilder.Entity("mission6_mlabar26.Models.movieForm", b =>
+                {
+                    b.HasOne("mission6_mlabar26.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
