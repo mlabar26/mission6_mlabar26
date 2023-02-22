@@ -10,9 +10,9 @@
 <br />
 
 @*Form that gathers input to then go to database*@
-<form method="post">
+<form method="post" >
 
-    <label>Category:</label>
+    <label asp-for="CategoryID">Category:</label>
     <select asp-for="CategoryID">
         <option value=""></option>
         @foreach (Category c in ViewBag.Categories)
@@ -20,21 +20,21 @@
                 <option value="@c.CategoryID">@c.CategoryName</option>
             }
     </select>
-    <br /><br />
+    <br />
 
-    <label>Title:</label>
+    <label asp-for="title">Title:</label>
     <input id="title" type="text" asp-for="title" />
-    <br /><br />
+    <br />
 
-    <label>Year (i.e. 1997):</label>
+    <label asp-for="year">Year (i.e. 1997):</label>
     <input id="year" type="text" asp-for="year" />
-    <br /><br />
+    <br />
 
-    <label>Director:</label>
+    <label asp-for="director">Director:</label>
     <input id="director" type="text" asp-for="director" />
-    <br /><br />
+    <br />
 
-    <label>Rating:</label>
+    <label asp-for="rating">Rating:</label>
     <select asp-for="rating">
         <option value=""></option>
         <option value="G">G</option>
@@ -47,26 +47,26 @@
         <option value="TV-PG">TV-PG</option>
         <option value="TV-Y7">TV-Y7</option>
     </select>
-    <br /><br />
+    <br />
 
-    <label>Edited:</label>
+    <label asp-for="edited">Edited:</label>
     <select asp-for="edited">
         <option value="false">No</option>
         <option value="true">Yes</option>
     </select>
-    <br /><br />
+    <br />
 
-    <label>Lent To:</label>
+    <label asp-for="lent">Lent To:</label>
     <input id="lent" type="text" asp-for="lent" />
-    <br /><br />
+    <br />
 
-    <label>Notes:</label>
+    <label asp-for="notes">Notes:</label>
     <textarea id="notes" asp-for="notes"></textarea>
-    <br /><br />
+    <br />
 
     <input id="submitMovie" type="submit" value="Submit Movie" />
 
     <!--Helps display errors to user-->
-    <div asp-validation-summary="All"></div>
+   <div asp-validation-summary="All"></div>
 
 </form>
