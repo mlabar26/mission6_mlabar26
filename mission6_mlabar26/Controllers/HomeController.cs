@@ -31,16 +31,21 @@ namespace mission6_mlabar26.Controllers
         }
 
         [HttpGet]
-        public IActionResult Movies()
+        public IActionResult AddMovies()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Movies(movieForm mf)
+        public IActionResult AddMovies(movieForm mf)
         {
             _MovieInfo.Add(mf);
             _MovieInfo.SaveChanges();
+            return View();
+        }
+
+        public IActionResult MovieList ()
+        {
             return View();
         }
     }

@@ -2,7 +2,7 @@
 
 namespace mission6_mlabar26.Migrations
 {
-    public partial class movie : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

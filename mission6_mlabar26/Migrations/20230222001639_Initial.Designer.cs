@@ -8,8 +8,8 @@ using mission6_mlabar26.Models;
 namespace mission6_mlabar26.Migrations
 {
     [DbContext(typeof(MovieInfoContext))]
-    [Migration("20230214031043_movie")]
-    partial class movie
+    [Migration("20230222001639_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
