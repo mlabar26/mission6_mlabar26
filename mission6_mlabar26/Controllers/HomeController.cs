@@ -43,19 +43,20 @@ namespace mission6_mlabar26.Controllers
             {
                 _MovieInfo.Add(mf);
                 _MovieInfo.SaveChanges();
-                return View("MovieList");
+                return RedirectToAction("MovieList");
             }
 
             else
             {
+                ViewBag.Categories = _MovieInfo.Categories.ToList();
                 return View();
             }
-            
         }
 
         [HttpGet]
         public IActionResult MovieList ()
         {
+            ViewBag.Categories = _MovieInfo.Categories.ToList();
             var movies = _MovieInfo.Responses
                 .Include(x => x.Category)
                 .ToList();
@@ -71,12 +72,20 @@ namespace mission6_mlabar26.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit (movieForm mf)
+        public IActionResult Edit(movieForm mf)
         {
-            _MovieInfo.Update(mf);
-            _MovieInfo.SaveChanges();
-            return View("MovieList");
+            if (ModelState.IsValid)
+            {
+                _MovieInfo.Update(mf);
+                _MovieInfo.SaveChanges();
+                return RedirectToAction("MovieList");
+            }
 
+            else
+            {
+                ViewBag.Categories = _MovieInfo.Categories.ToList();
+                return View("AddMovies");
+            }
         }
 
         public IActionResult Delete()
