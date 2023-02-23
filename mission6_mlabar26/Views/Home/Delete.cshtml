@@ -1,11 +1,16 @@
-﻿
+﻿ @*Provides deletion or opportunity to return to movie list*@
+
 @{
     ViewData["Title"] = "Delete Movie";
 }
+
+@model movieForm
 
 <h2>Confirm Deletion</h2>
 
 <form method="post" asp-controller="Home" asp-action="Delete">
     <a asp-controller="Home" asp-action="MovieList" class="btn btn-outline-primary">Cancel</a>
     <button type="submit">Delete</button>
+
+    <input type="hidden" asp-for="movieID" />
 </form>

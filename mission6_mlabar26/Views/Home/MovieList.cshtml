@@ -1,4 +1,6 @@
-﻿@{
+﻿@*This is where the inputs are populated on a table*@
+
+@{
     ViewData["Title"] = "Joel's Film List";
 }
 
@@ -32,7 +34,7 @@
                     <td>@x.notes</td>
 
                     <td><a asp-controller="Home" asp-action="Edit" asp-route-movieID="@x.movieID">Edit</a></td>
-                    <td><a asp-controller="Home" asp-action="Delete">Delete</a></td>
+                    <td><a asp-controller="Home" asp-action="Delete" asp-route-movieID="@x.movieID">Delete</a></td>
 
                 </tr>
             }

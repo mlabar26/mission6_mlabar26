@@ -18,6 +18,7 @@ namespace mission6_mlabar26.Models
         public DbSet<movieForm> Responses { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        //Everything below helps pre-populate database
         protected override void OnModelCreating(ModelBuilder mb)
         {
             mb.Entity<Category>().HasData(

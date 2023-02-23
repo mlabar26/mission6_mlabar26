@@ -1,3 +1,5 @@
+//Middleman for filling out movie list (also includes validation)
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

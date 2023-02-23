@@ -39,6 +39,7 @@ namespace mission6_mlabar26.Controllers
         [HttpPost]
         public IActionResult AddMovies(movieForm mf)
         {
+            //Validation
             if (ModelState.IsValid)
             {
                 _MovieInfo.Add(mf);
@@ -74,6 +75,7 @@ namespace mission6_mlabar26.Controllers
         [HttpPost]
         public IActionResult Edit(movieForm mf)
         {
+            //Validation
             if (ModelState.IsValid)
             {
                 _MovieInfo.Update(mf);
@@ -88,9 +90,19 @@ namespace mission6_mlabar26.Controllers
             }
         }
 
-        public IActionResult Delete()
+        [HttpGet]
+        public IActionResult Delete(int movieID)
         {
-            return View();
+            var movie = _MovieInfo.Responses.Single(x => x.movieID == movieID);
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(movieForm mf)
+        {
+            _MovieInfo.Responses.Remove(mf);
+            _MovieInfo.SaveChanges();
+            return RedirectToAction("MovieList");
         }
     }
 }
